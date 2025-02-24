@@ -3,16 +3,17 @@ import paramiko
 import re
 from Utils.OperationData import OperationData
 from collections import ChainMap
-
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+from time import sleep
 
 
 class BspTest:
     ssh = None
 
     def __init__(self):
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.ssh = paramiko.SSHClient()
-        self.log = logging.getLogger(self.__class__.__name__)
+        # self.log = logging
+        self.log = logging.getLogger(__name__)
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
     def login(self, host):
@@ -27,14 +28,15 @@ class BspTest:
         stdin, stdout, stderr = self.ssh.exec_command(cmd)
         stdout = stdout.read().decode()
         stderr = stderr.read().decode()
+        sleep(30)
         if stdin:
-            print(self.log.info(f'\nexec cmd：%s', cmd))
+            self.log.info(f'\nexec cmd：%s\n', cmd)
         if stdout:
-            print(self.log.info('\nsucess ：%s', stdout.strip()))
+            self.log.info('\nsucess ：%s\n', stdout.strip())
         else:
-            print(self.log.warning('\nNone output'))
+            self.log.warning('\nNone output\n')
         if stderr:
-            print(self.log.error('\nerror：%s', stderr.strip()))
+            self.log.error('\nerror：%s\n', stderr.strip())
         return stdout
 
     def close(self):
@@ -46,15 +48,45 @@ class BspTest:
         return dict_list
 
     def assert_Iozone(self, ioz_res):
-        dict_list = self.get_dict_result('a.csv')
-        # return_res = re.findall('([0-9]{8})\s+([0-9]{4})\s+([0-9]{7})\s+([0-9]{7})\s+([0-9]{7})\s+([0-9]{7})', ioz_res)
-        return_res = re.findall('([0-9]{8})\s+([0-9]{4}){\s+([0-9]{7})}{3}', ioz_res)
-        for i in return_res:
-            ast = '{:.2}'.format(int(i[2]) / int(dict_list['write']))
-            ast1 = '{:.2}'.format(int(i[3]) / int(dict_list['rewrite']))
-            ast2 = '{:.2}'.format(int(i[4]) / int(dict_list['read']))
-            ast3 = '{:.2}'.format(int(i[5]) / int(dict_list['reread']))
-            if float(ast) >= 0.95 and float(ast1) >= 0.95 and float(ast2) >= 0.95 and float(ast3) >= 0.95:
-                print(self.log.info('断言成功', f'\n历史数据{dict_list['history_result']}' + f'\n测试数据：{return_res}'))
+        global len_better
+        op = OperationData('iozone.csv')
+        dict_list = dict(ChainMap(*op.get_data_dict()))
+        if len(str(dict_list['reclen'])) == 3:
+            re_result = re.search(r'(\s+[0-9]{7}){4}', ioz_res)
+            if re_result == None:
+                logging.warning('测试数据未正常获取')
+                return False
             else:
-                print(self.log.warning('断言失败', f'\n历史数据{dict_list['history_result']}' + f'\n测试数据：{return_res}'))
+                re_list = [i for i in re_result.group(0).strip().split(' ') if i != '']
+                print(re_list)
+                list_history = dict_list['history_result'].split(' ')
+                print(list_history)
+                len_better = [i for i in re_list for j in list_history if int(i) / int(j) < 0.95]
+                if len_better == 0:
+                    logging.info(f'测试通过！测试数据：{list_history} 符合预期')
+                else:
+                    logging.warning(f'测试不通过：测试数据：{list_history} 低于历史数据 {re_list} ')
+                    return False
+            return len_better
+            # if len(set(len_better)) == 4:
+            #     logging.info(f'测试通过！测试数据：{list_history} 符合预期')
+            # else:
+            #     logging.warning(f'测试不通过：测试数据：{list_history} 低于历史数据 {dict_list['history_result']} ')
+        elif len(str(dict_list['reclen'])) == 4:
+            re_result = re.search(r'(\s+[0-9]{7}){4}', ioz_res)
+            if re_result == None:
+                logging.warning('测试数据未正常获取')
+                return False
+            else:
+                re_list = [i for i in re_result.group(0).strip().split(' ') if i != '']
+                # print(re_list)
+                list_history = dict_list['history_result'].split(' ')
+                # print(list_history)
+                len_better = [i for i in re_list for j in list_history if int(i) / int(j) < 0.95]
+                if len_better == 0:
+                    logging.info(f'测试通过！测试数据：{list_history} 符合预期')
+                else:
+                    logging.warning(f'测试不通过：测试数据：{list_history} 低于历史数据 {re_list} ')
+                    return False
+            return len_better
+

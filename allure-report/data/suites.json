@@ -2,59 +2,8 @@
   "uid" : "98d3104e051c652961429bf95fa0b5d6",
   "name" : "suites",
   "children" : [ {
-    "name" : "Case",
-    "children" : [ {
-      "name" : "test_fio",
-      "children" : [ {
-        "name" : "TestIOzone",
-        "children" : [ {
-          "name" : "test_01[iozone -r 4M -i 0 -i 1  -s 20G -I]",
-          "uid" : "2a8ac89a36e24edf",
-          "parentUid" : "05ec832e85ac05471da245864105bc00",
-          "status" : "passed",
-          "time" : {
-            "start" : 1740126608093,
-            "stop" : 1740126653612,
-            "duration" : 45519
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ "'iozone -r 4M -i 0 -i 1  -s 20G -I'" ]
-        }, {
-          "name" : "test_01[iozone -r 512 -i 0 -i 1  -s 20G -I]",
-          "uid" : "c6832f7eb299e8f3",
-          "parentUid" : "05ec832e85ac05471da245864105bc00",
-          "status" : "passed",
-          "time" : {
-            "start" : 1740126787738,
-            "stop" : 1740126815534,
-            "duration" : 27796
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ "'iozone -r 512 -i 0 -i 1  -s 20G -I'" ]
-        }, {
-          "name" : "test_01[iozone -r 1M -i 0 -i 1  -s 20G -I]",
-          "uid" : "3a301371987da5c5",
-          "parentUid" : "05ec832e85ac05471da245864105bc00",
-          "status" : "passed",
-          "time" : {
-            "start" : 1740126815539,
-            "stop" : 1740126894133,
-            "duration" : 78594
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ "'iozone -r 1M -i 0 -i 1  -s 20G -I'" ]
-        } ],
-        "uid" : "05ec832e85ac05471da245864105bc00"
-      } ],
-      "uid" : "c28d75d583a4b8511da450b7a23a0575"
-    } ],
-    "uid" : "9a5319302153c9ecff4470c01f6cd733"
-  }, {
     "name" : "test_01[iozone -r 4M -i 0 -i 1  -s 20G -I]",
-    "uid" : "69598807e3f4bbe5",
+    "uid" : "1e47b51484f6fe14",
     "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
     "status" : "passed",
     "time" : {
@@ -65,5 +14,56 @@
     "flaky" : false,
     "newFailed" : false,
     "parameters" : [ "'iozone -r 4M -i 0 -i 1  -s 20G -I'" ]
+  }, {
+    "name" : "Case",
+    "children" : [ {
+      "name" : "test_fio",
+      "children" : [ {
+        "name" : "TestIOzone",
+        "children" : [ {
+          "name" : "test_01[iozone -r 512 -i 0 -i 1  -s 20G -I]",
+          "uid" : "90b5112e0fa8c038",
+          "parentUid" : "05ec832e85ac05471da245864105bc00",
+          "status" : "passed",
+          "time" : {
+            "start" : 1740391058171,
+            "stop" : 1740391132210,
+            "duration" : 74039
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ "'iozone -r 512 -i 0 -i 1  -s 20G -I'" ]
+        }, {
+          "name" : "test_01[iozone -r 1M -i 0 -i 1  -s 20G -I]",
+          "uid" : "e90532fe040d872b",
+          "parentUid" : "05ec832e85ac05471da245864105bc00",
+          "status" : "failed",
+          "time" : {
+            "start" : 1740391132226,
+            "stop" : 1740391215658,
+            "duration" : 83432
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ "'iozone -r 1M -i 0 -i 1  -s 20G -I'" ]
+        }, {
+          "name" : "test_01[iozone -r 4M -i 0 -i 1  -s 20G -I]",
+          "uid" : "30c0362cc30d7724",
+          "parentUid" : "05ec832e85ac05471da245864105bc00",
+          "status" : "failed",
+          "time" : {
+            "start" : 1740391216006,
+            "stop" : 1740391336181,
+            "duration" : 120175
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ "'iozone -r 4M -i 0 -i 1  -s 20G -I'" ]
+        } ],
+        "uid" : "05ec832e85ac05471da245864105bc00"
+      } ],
+      "uid" : "c28d75d583a4b8511da450b7a23a0575"
+    } ],
+    "uid" : "9a5319302153c9ecff4470c01f6cd733"
   } ]
 }
