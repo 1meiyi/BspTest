@@ -1,0 +1,73 @@
+{
+  "uid" : "ba579c8656c38c54",
+  "name" : "test_01[iozone -r 4M -i 0 -i 1  -s 20G -I]",
+  "fullName" : "Case.test_fio.TestIOzone#test_01",
+  "historyId" : "f207d7419c426d87e6b1b7d5dacb4232",
+  "time" : {
+    "start" : 1740125804906,
+    "stop" : 1740125826060,
+    "duration" : 21154
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "65b453457cea27a6",
+      "name" : "log",
+      "source" : "65b453457cea27a6.txt",
+      "type" : "text/plain",
+      "size" : 1659
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 1,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "Case"
+  }, {
+    "name" : "suite",
+    "value" : "test_fio"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestIOzone"
+  }, {
+    "name" : "host",
+    "value" : "Meiyi-EXT"
+  }, {
+    "name" : "thread",
+    "value" : "30028-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "Case.test_fio"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "cmd",
+    "value" : "'iozone -r 4M -i 0 -i 1  -s 20G -I'"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "ba579c8656c38c54.json",
+  "parameterValues" : [ "'iozone -r 4M -i 0 -i 1  -s 20G -I'" ]
+}

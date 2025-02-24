@@ -1,7 +1,8 @@
 # 使用pandas操作Excel/csv文件
 import os
 import pandas
-
+import re
+from collections import ChainMap
 
 class OperationData(object):
     def __init__(self, file_name):
@@ -36,6 +37,9 @@ class OperationData(object):
 
 
 if __name__ == '__main__':
-    op = OperationData('user.csv')
-    print(op.get_data_list())
+
+    op = OperationData('a.csv')
+    data = op.get_data_list()
     print(op.get_data_dict())
+    a = [i[0] for i in data]
+    print(a)
