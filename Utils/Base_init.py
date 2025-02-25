@@ -53,28 +53,24 @@ class BspTest:
         dict_list = dict(ChainMap(*op.get_data_dict()))
         if len(str(dict_list['reclen'])) == 3:
             re_result = re.search(r'(\s+[0-9]{7}){4}', ioz_res)
-            if re_result == None:
-                logging.warning('测试数据未正常获取')
+            if re_result is None:
+                logging.warning('测试数据不正常或参数错误')
                 return False
             else:
-                re_list = [i for i in re_result.group(0).strip().split(' ') if i != '']
-                print(re_list)
-                list_history = dict_list['history_result'].split(' ')
-                print(list_history)
-                len_better = [i for i in re_list for j in list_history if int(i) / int(j) < 0.95]
-                if len_better == 0:
+                re_list = [i for i in re_result.group(0).strip().split(' ') if i != '']  # 测试数据
+                list_history = dict_list['history_result'].split(' ')  # 历史数据
+                len_better = len(set([i for i in re_list for j in list_history if int(i) / int(j) > 0.98]))
+                # 测试数据除以历史数据大于0.98,增加新列表并去重
+                if len_better == 4:
+                    # 测试数据都大于x86对照组，返回四个数值。
                     logging.info(f'测试通过！测试数据：{list_history} 符合预期')
+                    return True
                 else:
-                    logging.warning(f'测试不通过：测试数据：{list_history} 低于历史数据 {re_list} ')
+                    logging.warning(f'测试不通过：测试数据：{re_list} 低于低于X86对照组数据 {list_history} ')
                     return False
-            return len_better
-            # if len(set(len_better)) == 4:
-            #     logging.info(f'测试通过！测试数据：{list_history} 符合预期')
-            # else:
-            #     logging.warning(f'测试不通过：测试数据：{list_history} 低于历史数据 {dict_list['history_result']} ')
         elif len(str(dict_list['reclen'])) == 4:
             re_result = re.search(r'(\s+[0-9]{7}){4}', ioz_res)
-            if re_result == None:
+            if re_result is None:
                 logging.warning('测试数据未正常获取')
                 return False
             else:
@@ -82,11 +78,28 @@ class BspTest:
                 # print(re_list)
                 list_history = dict_list['history_result'].split(' ')
                 # print(list_history)
-                len_better = [i for i in re_list for j in list_history if int(i) / int(j) < 0.95]
-                if len_better == 0:
+                len_better = len(set([i for i in re_list for j in list_history if int(i) / int(j) > 0.98]))
+                # 测试数据除以历史数据大于0.98,增加新列表并去重
+                if len_better == 4:
+                    # 测试数据都大于x86对照组，返回四个数值。
                     logging.info(f'测试通过！测试数据：{list_history} 符合预期')
+                    return True
                 else:
-                    logging.warning(f'测试不通过：测试数据：{list_history} 低于历史数据 {re_list} ')
+                    logging.warning(f'测试不通过：测试数据：{re_list} 低于X86对照组数据 {list_history} ')
                     return False
-            return len_better
 
+    def assert_fio(self, fio_rs):
+        op = OperationData('fio.csv')
+        dict_list = dict(ChainMap(*op.get_data_dict()))
+        IOPS = re.search(r'IOPS=((\d+.\w))', fio_rs).group(1).strip()
+        run_time = re.search(r'(\d{5})-(\d{5}msec)', fio_rs).group(1).strip()
+        print(dict_list['IOPS'], type(dict_list['IOPS']))
+        print(dict_list['runtime'], type(dict_list['runtime']))
+        if float(IOPS) / float(dict_list['IOPS']) > 0.98 and int(run_time) / int(dict_list['runtime']) > 0.98:
+            logging.info(f'相较于x86对照数据：IOPS={dict_list['IOPS']}runtime={dict_list['runtime']}msec'
+                            f'测试数据：IOPS={IOPS} runtime={run_time}msec PASS')
+            return True
+        else:
+            logging.warning(f'测试数据下降,测试数据：IOPS={IOPS} runtime={run_time}msec，'
+                            f'x86对照数据：IOPS={dict_list['IOPS']}runtime={dict_list['runtime']}msec')
+            return False

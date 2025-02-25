@@ -3,7 +3,7 @@
   "name" : "suites",
   "children" : [ {
     "name" : "test_01[iozone -r 4M -i 0 -i 1  -s 20G -I]",
-    "uid" : "1e47b51484f6fe14",
+    "uid" : "59ddc80968af8756",
     "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
     "status" : "passed",
     "time" : {
@@ -22,7 +22,7 @@
         "name" : "TestIOzone",
         "children" : [ {
           "name" : "test_01[iozone -r 512 -i 0 -i 1  -s 20G -I]",
-          "uid" : "90b5112e0fa8c038",
+          "uid" : "68f536a3f0d42f06",
           "parentUid" : "05ec832e85ac05471da245864105bc00",
           "status" : "passed",
           "time" : {
@@ -35,7 +35,7 @@
           "parameters" : [ "'iozone -r 512 -i 0 -i 1  -s 20G -I'" ]
         }, {
           "name" : "test_01[iozone -r 1M -i 0 -i 1  -s 20G -I]",
-          "uid" : "e90532fe040d872b",
+          "uid" : "f9bb90bae073acd3",
           "parentUid" : "05ec832e85ac05471da245864105bc00",
           "status" : "failed",
           "time" : {
@@ -48,7 +48,7 @@
           "parameters" : [ "'iozone -r 1M -i 0 -i 1  -s 20G -I'" ]
         }, {
           "name" : "test_01[iozone -r 4M -i 0 -i 1  -s 20G -I]",
-          "uid" : "30c0362cc30d7724",
+          "uid" : "3616b046a77acdd3",
           "parentUid" : "05ec832e85ac05471da245864105bc00",
           "status" : "failed",
           "time" : {

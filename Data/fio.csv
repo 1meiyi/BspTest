@@ -1,0 +1,5 @@
+cmd,IOPS,runtime,comment
+sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=512b -size=1G -group_reporting -name=mytest,69.3,30241
+sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest,2373,17259
+sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=write -ioengine=psync -bs=512b -size=1G -group_reporting -name=mytest,42.0k,49955
+sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=write -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest,3230,12680
