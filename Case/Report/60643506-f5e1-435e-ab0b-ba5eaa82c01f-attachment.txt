@@ -1,3 +1,0 @@
-INFO     BspTest:Base_init.py:31 exec cmd：IOzone硬盘性能测试
-WARNING  BspTest:Base_init.py:35 None output
-ERROR    BspTest:Base_init.py:37 error：bash: 行 1: IOzone硬盘性能测试: 未找到命令

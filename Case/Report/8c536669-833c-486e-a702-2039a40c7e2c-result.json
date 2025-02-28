@@ -1,1 +1,0 @@
-{"name": "test_01[iozone -r 1M -i 0 -i 1  -s 20G -I]", "status": "passed", "parameters": [{"name": "cmd", "value": "'iozone -r 1M -i 0 -i 1  -s 20G -I'"}], "start": 1740366618869, "stop": 1740366640736, "uuid": "f28d9f7c-c50d-47a0-99fe-a99eb94f81dd", "testCaseId": "01a55d7010f48ebe0c3cf2503891f546", "fullName": "Case.test_fio.TestIOzone#test_01"}
