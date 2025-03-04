@@ -4,9 +4,7 @@ import json
 import base64
 from requests.utils import dict_from_cookiejar
 import datetime
-
-
-
+from BspTest.Utils import Base_init
 
 class Autoinstall:
     def __init__(self):
@@ -50,10 +48,10 @@ class Autoinstall:
 
     def get_gr_umd(self):
         print('umd仓库')
-        headers = self.get_headers()
         path = self.enbase('gr-umd/release_M1000_1.2.0')
         # https://oss.mthreads.com:9001/api/v1/buckets/release-ci/objects?prefix = Z3ItdW1kL3JlbGVhc2VfTTEwMDBfMS4yLjAv
-        response = self.requests.get(f'{self.url}{self.buckets}release-ci/objects?prefix={path}', headers=headers)
+        response = self.requests.get(f'{self.url}{self.buckets}release-ci/objects?prefix={path}',
+                                     headers=self.get_headers())
         print(response.status_code)
         print(response.text)
         print(response.json(), 'gr-umd')
@@ -67,26 +65,29 @@ class Autoinstall:
         # timedate = datetime.date.today().strftime('%Y%m%d')
         timedate = '20250206'
         prefix = self.enbase(f'release_M1000_1.2.0/{timedate}')
-        headers = self.get_headers()
         # prefix = {prefix}
         url = f'{self.url}{self.buckets}product-release/objects?prefix={prefix}'
         print(url)
-        response = self.requests.get(url, headers=headers)
+        response = self.requests.get(url, headers=self.get_headers())
         print(response.status_code)
         print(response.text)
 
     def get_kenels(self):
-        timedate = datetime.date.today().strftime('%Y%m%d')
-        prefix = self.enbase(f'm1000/daily/master/aibook-6.6-ubuntu/{timedate}/kernel-debs/')
-        headers = self.get_headers()
-        url = f'{self.url}{self.buckets}sw-build/objects?prefix={prefix}'
-        response = self.requests.get(url, headers=headers)
+        # timedate = datetime.date.today().strftime('%Y%m%d')
         deb_name = []
+        prefix = self.enbase(f'm1000/daily/master/aibook-6.6-ubuntu/')
+        master_url = f'{self.url}{self.buckets}sw-build/objects?prefix={prefix}'
+        res_date = self.requests.get(master_url, headers=self.get_headers())
+        timedate = [re.search('[0-9]{8}', i['name']).group() for i in res_date.json()['objects'] if
+                    re.search('[0-9]{8}', i['name']).group()]
+        deb_prefix = self.enbase(f'm1000/daily/master/aibook-6.6-ubuntu/{timedate[-1]}/kernel-debs/')
+        deb_url = f'{self.url}{self.buckets}sw-build/objects?prefix={deb_prefix}'
+        deb_res = requests.get(deb_url,headers=self.get_headers())
         for i in range(5):
-            deb_name.append(response.json()['objects'][i]['name'])
+            deb_name.append(deb_res.json()['objects'][i]['name'])
         for j in deb_name:
             if j.endswith('.deb'):
-                print(j, '')
+                print(f'wget https://oss.mthreads.com/sw-build/{j}')
                 pass  # 执行下载
 
     def list_file(self):
