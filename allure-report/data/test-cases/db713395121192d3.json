@@ -1,0 +1,76 @@
+{
+  "uid" : "db713395121192d3",
+  "name" : "test_01_iozone[iozone -r 4096 -i 0 -i 1  -s 20G -I]",
+  "fullName" : "Case.test_fio.TestIOzone#test_01_iozone",
+  "historyId" : "e8a473e53ff4fe563a0035ed56e29482",
+  "time" : {
+    "start" : 1740473686374,
+    "stop" : 1740473739226,
+    "duration" : 52852
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "3903313b940b414",
+      "name" : "log",
+      "source" : "3903313b940b414.txt",
+      "type" : "text/plain",
+      "size" : 1820
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 1,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Case"
+  }, {
+    "name" : "suite",
+    "value" : "test_fio"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestIOzone"
+  }, {
+    "name" : "host",
+    "value" : "Meiyi-EXT"
+  }, {
+    "name" : "thread",
+    "value" : "20432-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "Case.test_fio"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "cmd",
+    "value" : "'iozone -r 4096 -i 0 -i 1  -s 20G -I'"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')" ]
+  },
+  "source" : "db713395121192d3.json",
+  "parameterValues" : [ "'iozone -r 4096 -i 0 -i 1  -s 20G -I'" ]
+}

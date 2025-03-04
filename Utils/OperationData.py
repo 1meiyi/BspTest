@@ -39,15 +39,18 @@ class OperationData(object):
 
 
 if __name__ == '__main__':
-    rs = """"""
-    # op = OperationData('iozone.csv')
-    # data = op.get_data_list()
+    rs = """
+    记录了10240+0 的读入
+    记录了10240+0 的写出
+    10737418240字节（11 GB，10 GiB）已复制，4.53647 s，2.4 GB/s"""
+    op = OperationData('iozone.csv')
     # print(op.get_data_dict())
     # a = [i[0] for i in data]
-    # print(a)
-    a = ['4276288', '4290095', '3334108', '3341175'] # 测试数据
-    b = ['3131816', '3260779', '3045160', '3044898']   # 历史数据
-    len_better = [i for i in a for j in b if int(i) / int(j) > 0.98]
-    print(set(len_better))
-    print(len(set(len_better)))
 
+    # re_rs = re.search(r'已复制，(\d.\d{5}) s，(\d.\d) GB/s',rs)
+    # print(re_rs.group(1).strip())
+    # print(re_rs.group(2).strip())
+    dict_list = dict(ChainMap(*op.get_data_dict()))
+    list_history = dict_list['history_result'].split(' ')
+
+    print(list_history)

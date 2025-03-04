@@ -1,0 +1,36 @@
+INFO     Utils.Base_init:Base_init.py:33 
+exec cmd：sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=512b -size=1G -group_reporting -name=mytest
+
+INFO     Utils.Base_init:Base_init.py:35 
+sucess ：mytest: (g=0): rw=read, bs=(R) 512B-512B, (W) 512B-512B, (T) 512B-512B, ioengine=psync, iodepth=1
+fio-3.28
+Starting 1 thread
+
+mytest: (groupid=0, jobs=1): err= 0: pid=1491077: Tue Feb 25 18:53:15 2025
+  read: IOPS=60.5k, BW=29.5MiB/s (31.0MB/s)(1024MiB/34668msec)
+    clat (usec): min=10, max=1132, avg=16.10, stdev= 2.19
+     lat (usec): min=11, max=1132, avg=16.17, stdev= 2.19
+    clat percentiles (nsec):
+     |  1.00th=[12224],  5.00th=[13760], 10.00th=[13888], 20.00th=[14144],
+     | 30.00th=[15168], 40.00th=[15680], 50.00th=[15808], 60.00th=[16064],
+     | 70.00th=[16512], 80.00th=[18048], 90.00th=[18816], 95.00th=[19840],
+     | 99.00th=[20608], 99.50th=[22656], 99.90th=[25728], 99.95th=[27008],
+     | 99.99th=[27264]
+   bw (  KiB/s): min=28587, max=34608, per=100.00%, avg=30257.94, stdev=2558.18, samples=69
+   iops        : min=57174, max=69216, avg=60515.88, stdev=5116.37, samples=69
+  lat (usec)   : 20=97.28%, 50=2.72%, 100=0.01%, 250=0.01%, 500=0.01%
+  lat (msec)   : 2=0.01%
+  cpu          : usr=5.60%, sys=7.92%, ctx=2097153, majf=0, minf=1
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=2097152,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=29.5MiB/s (31.0MB/s), 29.5MiB/s-29.5MiB/s (31.0MB/s-31.0MB/s), io=1024MiB (1074MB), run=34668-34668msec
+
+Disk stats (read/write):
+  nvme0n1: ios=2096053/44, merge=0/10, ticks=27236/8, in_queue=27245, util=99.74%
+
+INFO     root:Base_init.py:101 x86对照数据：IOPS=69.3runtime=30241msec 测试数据：IOPS=60.5 runtime=34668msec 无下降

@@ -1,0 +1,36 @@
+INFO     Utils.Base_init:Base_init.py:33 
+exec cmd：sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest
+
+INFO     Utils.Base_init:Base_init.py:35 
+sucess ：mytest: (g=0): rw=read, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=psync, iodepth=1
+fio-3.28
+Starting 1 thread
+
+mytest: (groupid=0, jobs=1): err= 0: pid=1480073: Tue Feb 25 17:43:09 2025
+  read: IOPS=2541, BW=2542MiB/s (2665MB/s)(40.0GiB/16114msec)
+    clat (usec): min=231, max=6425, avg=392.92, stdev=87.35
+     lat (usec): min=231, max=6426, avg=393.00, stdev=87.36
+    clat percentiles (usec):
+     |  1.00th=[  249],  5.00th=[  273], 10.00th=[  297], 20.00th=[  338],
+     | 30.00th=[  363], 40.00th=[  375], 50.00th=[  388], 60.00th=[  400],
+     | 70.00th=[  420], 80.00th=[  453], 90.00th=[  469], 95.00th=[  490],
+     | 99.00th=[  578], 99.50th=[  693], 99.90th=[ 1336], 99.95th=[ 1336],
+     | 99.99th=[ 1401]
+   bw (  MiB/s): min= 2062, max= 2632, per=100.00%, avg=2542.06, stdev=96.49, samples=32
+   iops        : min= 2062, max= 2632, avg=2542.06, stdev=96.49, samples=32
+  lat (usec)   : 250=1.18%, 500=95.03%, 750=3.43%, 1000=0.12%
+  lat (msec)   : 2=0.23%, 10=0.01%
+  cpu          : usr=0.35%, sys=14.22%, ctx=40960, majf=0, minf=256
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=40960,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=2542MiB/s (2665MB/s), 2542MiB/s-2542MiB/s (2665MB/s-2665MB/s), io=40.0GiB (42.9GB), run=16114-16114msec
+
+Disk stats (read/write):
+  nvme0n1: ios=161639/52, merge=0/9, ticks=29053/12, in_queue=29067, util=99.41%
+
+WARNING  root:Base_init.py:106 测试数据波动0.97%,测试数据：IOPS=2541 runtime=16114msec，x86对照数据：IOPS=69.3runtime=30241msec

@@ -1,0 +1,169 @@
+{
+  "uid" : "1d0ab33241ec521d",
+  "name" : "test_01_iozone[iozone -r 512 -i 0 -i 1  -s 20G -I]",
+  "fullName" : "Case.test_fio.TestIOzone#test_01_iozone",
+  "historyId" : "d29675e851e57b107afffa927c987a46",
+  "time" : {
+    "start" : 1740484843757,
+    "stop" : 1740484899867,
+    "duration" : 56110
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "db8f808501edddd8",
+      "name" : "log",
+      "source" : "db8f808501edddd8.txt",
+      "type" : "text/plain",
+      "size" : 1777
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 1,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Case"
+  }, {
+    "name" : "suite",
+    "value" : "test_fio"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestIOzone"
+  }, {
+    "name" : "host",
+    "value" : "Meiyi-EXT"
+  }, {
+    "name" : "thread",
+    "value" : "24896-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "Case.test_fio"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "cmd",
+    "value" : "'iozone -r 512 -i 0 -i 1  -s 20G -I'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "7cda7e9f7fdc65ee",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740483643554,
+        "stop" : 1740483700133,
+        "duration" : 56579
+      }
+    }, {
+      "uid" : "aff714b9e431bb98",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740480593117,
+        "stop" : 1740480650019,
+        "duration" : 56902
+      }
+    }, {
+      "uid" : "cdbd4e532edde43e",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: True\nassert False",
+      "time" : {
+        "start" : 1740478422201,
+        "stop" : 1740478521224,
+        "duration" : 99023
+      }
+    }, {
+      "uid" : "4d3e4bae2bc3e06d",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: True\nassert False",
+      "time" : {
+        "start" : 1740478098307,
+        "stop" : 1740478156577,
+        "duration" : 58270
+      }
+    }, {
+      "uid" : "5ba36e51581f6716",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: True\nassert False",
+      "time" : {
+        "start" : 1740477571234,
+        "stop" : 1740477629510,
+        "duration" : 58276
+      }
+    }, {
+      "uid" : "322cde67533b180d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740477085664,
+        "stop" : 1740477142905,
+        "duration" : 57241
+      }
+    }, {
+      "uid" : "306ce2ea0ae12660",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740476340400,
+        "stop" : 1740476397641,
+        "duration" : 57241
+      }
+    }, {
+      "uid" : "84b1e0839fba063e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740475530852,
+        "stop" : 1740475587555,
+        "duration" : 56703
+      }
+    }, {
+      "uid" : "9ca64648b3ca96e8",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740474970403,
+        "stop" : 1740475027251,
+        "duration" : 56848
+      }
+    }, {
+      "uid" : "e78eee74c84665c5",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740474117384,
+        "stop" : 1740474173799,
+        "duration" : 56415
+      }
+    }, {
+      "uid" : "d0b578fe2ecbc2fc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740473574044,
+        "stop" : 1740473630949,
+        "duration" : 56905
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')" ]
+  },
+  "source" : "1d0ab33241ec521d.json",
+  "parameterValues" : [ "'iozone -r 512 -i 0 -i 1  -s 20G -I'" ]
+}

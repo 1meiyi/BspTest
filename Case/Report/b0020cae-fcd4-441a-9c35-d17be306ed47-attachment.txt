@@ -1,0 +1,36 @@
+INFO     Utils.Base_init:Base_init.py:33 
+exec cmd：sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=write -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest
+
+INFO     Utils.Base_init:Base_init.py:35 
+sucess ：mytest: (g=0): rw=write, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=psync, iodepth=1
+fio-3.28
+Starting 1 thread
+
+mytest: (groupid=0, jobs=1): err= 0: pid=1483700: Tue Feb 25 18:05:56 2025
+  write: IOPS=2762, BW=2762MiB/s (2897MB/s)(40.0GiB/14828msec); 0 zone resets
+    clat (usec): min=269, max=21473, avg=352.46, stdev=148.55
+     lat (usec): min=274, max=21481, avg=361.36, stdev=148.76
+    clat percentiles (usec):
+     |  1.00th=[  273],  5.00th=[  281], 10.00th=[  302], 20.00th=[  343],
+     | 30.00th=[  343], 40.00th=[  347], 50.00th=[  347], 60.00th=[  351],
+     | 70.00th=[  355], 80.00th=[  363], 90.00th=[  383], 95.00th=[  392],
+     | 99.00th=[  420], 99.50th=[  449], 99.90th=[ 1696], 99.95th=[ 1713],
+     | 99.99th=[ 1958]
+   bw (  MiB/s): min= 2004, max= 2812, per=100.00%, avg=2762.90, stdev=148.39, samples=29
+   iops        : min= 2004, max= 2812, avg=2762.90, stdev=148.39, samples=29
+  lat (usec)   : 500=99.66%, 750=0.03%
+  lat (msec)   : 2=0.31%, 4=0.01%, 20=0.01%, 50=0.01%
+  cpu          : usr=2.60%, sys=33.68%, ctx=40960, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,40960,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=2762MiB/s (2897MB/s), 2762MiB/s-2762MiB/s (2897MB/s-2897MB/s), io=40.0GiB (42.9GB), run=14828-14828msec
+
+Disk stats (read/write):
+  nvme0n1: ios=0/161887, merge=0/7, ticks=0/36147, in_queue=36178, util=99.38%
+
+INFO     root:Base_init.py:101 相较于x86对照数据：IOPS=69.3runtime=30241msec测试数据：IOPS=2762 runtime=14828msec PASS

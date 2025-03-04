@@ -1,0 +1,183 @@
+{
+  "uid" : "ff8b176e3d1b0f63",
+  "name" : "test_01_iozone[iozone -r 1024 -i 0 -i 1  -s 20G -I]",
+  "fullName" : "Case.test_fio.TestIOzone#test_01_iozone",
+  "historyId" : "ca422706b700df1cec34cbac6a828e29",
+  "time" : {
+    "start" : 1740484899873,
+    "stop" : 1740484957304,
+    "duration" : 57431
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: True\nassert False",
+  "statusTrace" : "self = <Case.test_fio.TestIOzone object at 0x000002BD3B08A0D0>\ncmd = 'iozone -r 1024 -i 0 -i 1  -s 20G -I'\n\n    @pytest.mark.description(\"IOzone性能测试: \"\n                             \"http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48\")\n    @pytest.mark.parametrize('cmd', [i[0] for i in data_iozone])\n    def test_01_iozone(self, cmd):\n        ioz_res = fp.send(cmd)\n        len_rs = fp.assert_Iozone(ioz_res)\n        print(len_rs)\n>       assert len_rs, True\nE       AssertionError: True\nE       assert False\n\ntest_fio.py:22: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: True\nassert False",
+    "statusTrace" : "self = <Case.test_fio.TestIOzone object at 0x000002BD3B08A0D0>\ncmd = 'iozone -r 1024 -i 0 -i 1  -s 20G -I'\n\n    @pytest.mark.description(\"IOzone性能测试: \"\n                             \"http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48\")\n    @pytest.mark.parametrize('cmd', [i[0] for i in data_iozone])\n    def test_01_iozone(self, cmd):\n        ioz_res = fp.send(cmd)\n        len_rs = fp.assert_Iozone(ioz_res)\n        print(len_rs)\n>       assert len_rs, True\nE       AssertionError: True\nE       assert False\n\ntest_fio.py:22: AssertionError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "dd30539a66ee6a6e",
+      "name" : "log",
+      "source" : "dd30539a66ee6a6e.txt",
+      "type" : "text/plain",
+      "size" : 1852
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 1,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Case"
+  }, {
+    "name" : "suite",
+    "value" : "test_fio"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestIOzone"
+  }, {
+    "name" : "host",
+    "value" : "Meiyi-EXT"
+  }, {
+    "name" : "thread",
+    "value" : "24896-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "Case.test_fio"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "cmd",
+    "value" : "'iozone -r 1024 -i 0 -i 1  -s 20G -I'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "1d2092dafdd1730f",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: True\nassert False",
+      "time" : {
+        "start" : 1740483700138,
+        "stop" : 1740483757089,
+        "duration" : 56951
+      }
+    }, {
+      "uid" : "8e3853b25a38e70",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: True\nassert False",
+      "time" : {
+        "start" : 1740480650023,
+        "stop" : 1740480707474,
+        "duration" : 57451
+      }
+    }, {
+      "uid" : "224e369f49ce8287",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: True\nassert False",
+      "time" : {
+        "start" : 1740478521605,
+        "stop" : 1740478578763,
+        "duration" : 57158
+      }
+    }, {
+      "uid" : "a59d31cd6d7d6219",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740478156904,
+        "stop" : 1740478212077,
+        "duration" : 55173
+      }
+    }, {
+      "uid" : "3192ad652cfb7068",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: True\nassert False",
+      "time" : {
+        "start" : 1740477629819,
+        "stop" : 1740477685958,
+        "duration" : 56139
+      }
+    }, {
+      "uid" : "d287283f7accd59f",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: True\nassert False",
+      "time" : {
+        "start" : 1740477142910,
+        "stop" : 1740477199859,
+        "duration" : 56949
+      }
+    }, {
+      "uid" : "5ed8dae505c6495d",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: True\nassert False",
+      "time" : {
+        "start" : 1740476397646,
+        "stop" : 1740476454787,
+        "duration" : 57141
+      }
+    }, {
+      "uid" : "a35611bcb1fefefd",
+      "status" : "broken",
+      "statusDetails" : "ValueError: invalid literal for int() with base 10: '  3410295  3593327  2774925  2798015'",
+      "time" : {
+        "start" : 1740475587560,
+        "stop" : 1740475645000,
+        "duration" : 57440
+      }
+    }, {
+      "uid" : "d8499fedf8aef0f3",
+      "status" : "broken",
+      "statusDetails" : "ValueError: invalid literal for int() with base 10: '  3572684  3585041  2735779  2733852'",
+      "time" : {
+        "start" : 1740475027256,
+        "stop" : 1740475084661,
+        "duration" : 57405
+      }
+    }, {
+      "uid" : "37edcada115d25e6",
+      "status" : "broken",
+      "statusDetails" : "ValueError: invalid literal for int() with base 10: '  3404171  3601866  2799236  2792924'",
+      "time" : {
+        "start" : 1740474173802,
+        "stop" : 1740474231559,
+        "duration" : 57757
+      }
+    }, {
+      "uid" : "e756153cfb1f17ed",
+      "status" : "passed",
+      "time" : {
+        "start" : 1740473630954,
+        "stop" : 1740473686366,
+        "duration" : 55412
+      }
+    } ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')" ]
+  },
+  "source" : "ff8b176e3d1b0f63.json",
+  "parameterValues" : [ "'iozone -r 1024 -i 0 -i 1  -s 20G -I'" ]
+}

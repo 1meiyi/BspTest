@@ -1,0 +1,3 @@
+cmd,runtime,speed,comment
+dd if=/dev/zero of=10G_zero.txt bs=1M count=10240 oflag=direct,3.91461,2.7,
+dd if=10G_zero.txt of=/dev/null bs=1M count=10240 iflag=direct,4.01288,2.7,

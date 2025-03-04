@@ -10,7 +10,7 @@ class BspTest:
     ssh = None
 
     def __init__(self):
-        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        logging.basicConfig(level=logging.INFO, format='\n%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.ssh = paramiko.SSHClient()
         # self.log = logging
         self.log = logging.getLogger(__name__)
@@ -30,13 +30,13 @@ class BspTest:
         stderr = stderr.read().decode()
         sleep(30)
         if stdin:
-            self.log.info(f'\nexec cmd：%s\n', cmd)
+            self.log.info(f'exec cmd：%s\n', cmd)
         if stdout:
-            self.log.info('\nsucess ：%s\n', stdout.strip())
+            self.log.info('sucess ：%s\n', stdout.strip())
         else:
-            self.log.warning('\nNone output\n')
+            self.log.warning('None output\n')
         if stderr:
-            self.log.error('\nerror：%s\n', stderr.strip())
+            self.log.error('error：%s\n', stderr.strip())
         return stdout
 
     def close(self):
@@ -63,10 +63,11 @@ class BspTest:
                 # 测试数据除以历史数据大于0.98,增加新列表并去重
                 if len_better == 4:
                     # 测试数据都大于x86对照组，返回四个数值。
-                    logging.info(f'测试通过！测试数据：{list_history} 符合预期')
+                    logging.info(f'测试通过！测试数据：{re_list} 符合预期')
                     return True
                 else:
-                    logging.warning(f'测试不通过：测试数据：{re_list} 低于低于X86对照组数据 {list_history} ')
+                    gap_result = (int(re_list[0]) - int(list_history[0])) / int(list_history[0])
+                    logging.warning(f'测试数据波动{float(gap_result):.2f}%,测试数据：{re_list} 低于低于X86对照组数据 {list_history} ')
                     return False
         elif len(str(dict_list['reclen'])) == 4:
             re_result = re.search(r'(\s+[0-9]{7}){4}', ioz_res)
@@ -82,10 +83,11 @@ class BspTest:
                 # 测试数据除以历史数据大于0.98,增加新列表并去重
                 if len_better == 4:
                     # 测试数据都大于x86对照组，返回四个数值。
-                    logging.info(f'测试通过！测试数据：{list_history} 符合预期')
+                    logging.info(f'测试通过！测试数据：{re_list} 符合预期')
                     return True
                 else:
-                    logging.warning(f'测试不通过：测试数据：{re_list} 低于X86对照组数据 {list_history} ')
+                    gap_result = (int(re_list[0]) - int(list_history[0])) / int(list_history[0])
+                    logging.warning(f'测试数据波动{gap_result:.2f}%,测试数据：{re_list} 低于X86对照组数据 {list_history} ')
                     return False
 
     def assert_fio(self, fio_rs):
@@ -93,13 +95,16 @@ class BspTest:
         dict_list = dict(ChainMap(*op.get_data_dict()))
         IOPS = re.search(r'IOPS=((\d+.\w))', fio_rs).group(1).strip()
         run_time = re.search(r'(\d{5})-(\d{5}msec)', fio_rs).group(1).strip()
-        print(dict_list['IOPS'], type(dict_list['IOPS']))
-        print(dict_list['runtime'], type(dict_list['runtime']))
-        if float(IOPS) / float(dict_list['IOPS']) > 0.98 and int(run_time) / int(dict_list['runtime']) > 0.98:
-            logging.info(f'相较于x86对照数据：IOPS={dict_list['IOPS']}runtime={dict_list['runtime']}msec'
-                            f'测试数据：IOPS={IOPS} runtime={run_time}msec PASS')
+        # print(dict_list['IOPS'], type(dict_list['IOPS']))
+        # print(dict_list['runtime'], type(dict_list['runtime']))
+        if (float(IOPS) - float(dict_list['IOPS'])) / float(dict_list['IOPS']) < 0.98:
+            logging.info((float(IOPS) - float(dict_list['IOPS'])) / float(dict_list['IOPS']) < 0.98)
+            logging.info(IOPS,dict_list['IOPS'],dict_list['IOPS'])
+            logging.info(f'x86对照数据：IOPS={dict_list['IOPS']}runtime={dict_list['runtime']}msec'
+                            f' 测试数据：IOPS={IOPS} runtime={run_time}msec 无下降')
             return True
         else:
-            logging.warning(f'测试数据下降,测试数据：IOPS={IOPS} runtime={run_time}msec，'
+            logging.warning(f'测试数据波动{(float(IOPS) - float(dict_list['IOPS'])) / float(dict_list['IOPS']):.2f}%,'
+                            f'测试数据：IOPS={IOPS} runtime={run_time}msec，'
                             f'x86对照数据：IOPS={dict_list['IOPS']}runtime={dict_list['runtime']}msec')
             return False

@@ -1,0 +1,36 @@
+INFO     Utils.Base_init:Base_init.py:33 
+exec cmd：sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest
+
+INFO     Utils.Base_init:Base_init.py:35 
+sucess ：mytest: (g=0): rw=read, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=psync, iodepth=1
+fio-3.28
+Starting 1 thread
+
+mytest: (groupid=0, jobs=1): err= 0: pid=1474169: Tue Feb 25 17:06:04 2025
+  read: IOPS=2618, BW=2618MiB/s (2745MB/s)(40.0GiB/15644msec)
+    clat (usec): min=231, max=11351, avg=381.44, stdev=121.34
+     lat (usec): min=231, max=11352, avg=381.51, stdev=121.35
+    clat percentiles (usec):
+     |  1.00th=[  243],  5.00th=[  253], 10.00th=[  262], 20.00th=[  293],
+     | 30.00th=[  330], 40.00th=[  363], 50.00th=[  379], 60.00th=[  400],
+     | 70.00th=[  416], 80.00th=[  449], 90.00th=[  469], 95.00th=[  494],
+     | 99.00th=[  635], 99.50th=[ 1319], 99.90th=[ 1336], 99.95th=[ 1336],
+     | 99.99th=[ 1434]
+   bw (  MiB/s): min= 1592, max= 2850, per=99.97%, avg=2617.42, stdev=220.82, samples=31
+   iops        : min= 1592, max= 2850, avg=2617.42, stdev=220.82, samples=31
+  lat (usec)   : 250=3.69%, 500=92.24%, 750=3.35%, 1000=0.11%
+  lat (msec)   : 2=0.61%, 20=0.01%
+  cpu          : usr=0.27%, sys=14.65%, ctx=40961, majf=0, minf=256
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=40960,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=2618MiB/s (2745MB/s), 2618MiB/s-2618MiB/s (2745MB/s-2745MB/s), io=40.0GiB (42.9GB), run=15644-15644msec
+
+Disk stats (read/write):
+  nvme0n1: ios=161152/37, merge=0/7, ticks=28996/7, in_queue=29003, util=99.38%
+
+WARNING  root:Base_init.py:106 测试数据波动2617.97,测试数据：IOPS=2618 runtime=15644msec，x86对照数据：IOPS=69.3runtime=30241msec

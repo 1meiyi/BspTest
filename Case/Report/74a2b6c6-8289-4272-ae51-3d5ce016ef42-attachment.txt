@@ -1,0 +1,36 @@
+INFO     Utils.Base_init:Base_init.py:33 
+exec cmd：sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=write -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest
+
+INFO     Utils.Base_init:Base_init.py:35 
+sucess ：mytest: (g=0): rw=write, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=psync, iodepth=1
+fio-3.28
+Starting 1 thread
+
+mytest: (groupid=0, jobs=1): err= 0: pid=1491608: Tue Feb 25 18:56:18 2025
+  write: IOPS=2699, BW=2699MiB/s (2830MB/s)(40.0GiB/15175msec); 0 zone resets
+    clat (usec): min=268, max=13327, avg=360.97, stdev=150.32
+     lat (usec): min=274, max=13335, avg=369.84, stdev=150.52
+    clat percentiles (usec):
+     |  1.00th=[  277],  5.00th=[  281], 10.00th=[  310], 20.00th=[  343],
+     | 30.00th=[  343], 40.00th=[  347], 50.00th=[  351], 60.00th=[  355],
+     | 70.00th=[  359], 80.00th=[  367], 90.00th=[  392], 95.00th=[  404],
+     | 99.00th=[  461], 99.50th=[ 1696], 99.90th=[ 1713], 99.95th=[ 1713],
+     | 99.99th=[ 1778]
+   bw (  MiB/s): min=  694, max= 2788, per=99.98%, avg=2698.73, stdev=379.27, samples=30
+   iops        : min=  694, max= 2788, avg=2698.73, stdev=379.27, samples=30
+  lat (usec)   : 500=99.20%, 750=0.05%, 1000=0.01%
+  lat (msec)   : 2=0.74%, 4=0.01%, 10=0.01%, 20=0.01%
+  cpu          : usr=2.68%, sys=32.74%, ctx=40960, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,40960,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=2699MiB/s (2830MB/s), 2699MiB/s-2699MiB/s (2830MB/s-2830MB/s), io=40.0GiB (42.9GB), run=15175-15175msec
+
+Disk stats (read/write):
+  nvme0n1: ios=0/163602, merge=0/12, ticks=0/37497, in_queue=37526, util=99.39%
+
+WARNING  root:Base_init.py:105 测试数据波动37.95%,测试数据：IOPS=2699 runtime=15175msec，x86对照数据：IOPS=69.3runtime=30241msec

@@ -1,0 +1,34 @@
+INFO     Utils.Base_init:Base_init.py:33 
+exec cmd：sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest
+
+INFO     Utils.Base_init:Base_init.py:35 
+sucess ：mytest: (g=0): rw=read, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=psync, iodepth=1
+fio-3.28
+Starting 1 thread
+
+mytest: (groupid=0, jobs=1): err= 0: pid=1472718: Tue Feb 25 16:57:01 2025
+  read: IOPS=2593, BW=2594MiB/s (2720MB/s)(40.0GiB/15791msec)
+    clat (usec): min=231, max=11261, avg=385.03, stdev=99.83
+     lat (usec): min=231, max=11262, avg=385.11, stdev=99.83
+    clat percentiles (usec):
+     |  1.00th=[  245],  5.00th=[  258], 10.00th=[  277], 20.00th=[  314],
+     | 30.00th=[  355], 40.00th=[  367], 50.00th=[  383], 60.00th=[  400],
+     | 70.00th=[  420], 80.00th=[  453], 90.00th=[  474], 95.00th=[  498],
+     | 99.00th=[  619], 99.50th=[  693], 99.90th=[ 1319], 99.95th=[ 1336],
+     | 99.99th=[ 1336]
+   bw (  MiB/s): min= 1856, max= 2774, per=100.00%, avg=2593.94, stdev=160.73, samples=31
+   iops        : min= 1856, max= 2774, avg=2593.94, stdev=160.73, samples=31
+  lat (usec)   : 250=2.31%, 500=93.08%, 750=4.28%, 1000=0.21%
+  lat (msec)   : 2=0.10%, 20=0.01%
+  cpu          : usr=0.28%, sys=14.53%, ctx=40960, majf=0, minf=256
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=40960,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=2594MiB/s (2720MB/s), 2594MiB/s-2594MiB/s (2720MB/s-2720MB/s), io=40.0GiB (42.9GB), run=15791-15791msec
+
+Disk stats (read/write):
+  nvme0n1: ios=162363/53, merge=0/28, ticks=29211/18, in_queue=29236, util=99.40%

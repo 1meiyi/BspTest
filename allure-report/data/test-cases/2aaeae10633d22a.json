@@ -1,0 +1,80 @@
+{
+  "uid" : "2aaeae10633d22a",
+  "name" : "test_02_fio[sudo fio -filename=\\u6587\\u4ef6 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest]",
+  "fullName" : "Case.test_fio.TestIOzone#test_02_fio",
+  "historyId" : "d79d6d4e4e9f7ddaeced170337cea383",
+  "time" : {
+    "start" : 1740478757908,
+    "stop" : 1740478810601,
+    "duration" : 52693
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: True\nassert False",
+  "statusTrace" : "self = <Case.test_fio.TestIOzone object at 0x000002159B74C290>\ncmd = 'sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest'\n\n    @pytest.mark.description(\"fio硬盘性能测试: \"\n                             \"http://qa-zentao.mthreads.com:9000/testcase-view-8388-7.html?tid=xen4k1po\")\n    @pytest.mark.parametrize('cmd', [i[0] for i in data_fio])\n    def test_02_fio(self, cmd):\n        fio_rs = fp.send(cmd)\n        final_rs = fp.assert_fio(fio_rs)\n>       assert final_rs, True\nE       AssertionError: True\nE       assert False\n\ntest_fio.py:30: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: True\nassert False",
+    "statusTrace" : "self = <Case.test_fio.TestIOzone object at 0x000002159B74C290>\ncmd = 'sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest'\n\n    @pytest.mark.description(\"fio硬盘性能测试: \"\n                             \"http://qa-zentao.mthreads.com:9000/testcase-view-8388-7.html?tid=xen4k1po\")\n    @pytest.mark.parametrize('cmd', [i[0] for i in data_fio])\n    def test_02_fio(self, cmd):\n        fio_rs = fp.send(cmd)\n        final_rs = fp.assert_fio(fio_rs)\n>       assert final_rs, True\nE       AssertionError: True\nE       assert False\n\ntest_fio.py:30: AssertionError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "fb8f5b6e8ef6539",
+      "name" : "log",
+      "source" : "fb8f5b6e8ef6539.txt",
+      "type" : "text/plain",
+      "size" : 2091
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 1,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "description('fio硬盘性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8388-7.html?tid=xen4k1po')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Case"
+  }, {
+    "name" : "suite",
+    "value" : "test_fio"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestIOzone"
+  }, {
+    "name" : "host",
+    "value" : "Meiyi-EXT"
+  }, {
+    "name" : "thread",
+    "value" : "6568-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "Case.test_fio"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "cmd",
+    "value" : "'sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest'"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "description('fio硬盘性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8388-7.html?tid=xen4k1po')" ]
+  },
+  "source" : "2aaeae10633d22a.json",
+  "parameterValues" : [ "'sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest'" ]
+}

@@ -1,0 +1,80 @@
+{
+  "uid" : "a35611bcb1fefefd",
+  "name" : "test_01_iozone[iozone -r 1024 -i 0 -i 1  -s 20G -I]",
+  "fullName" : "Case.test_fio.TestIOzone#test_01_iozone",
+  "historyId" : "ca422706b700df1cec34cbac6a828e29",
+  "time" : {
+    "start" : 1740475587560,
+    "stop" : 1740475645000,
+    "duration" : 57440
+  },
+  "status" : "broken",
+  "statusMessage" : "ValueError: invalid literal for int() with base 10: '  3410295  3593327  2774925  2798015'",
+  "statusTrace" : "self = <Case.test_fio.TestIOzone object at 0x00000192D81AA0D0>\ncmd = 'iozone -r 1024 -i 0 -i 1  -s 20G -I'\n\n    @pytest.mark.description(\"IOzone性能测试: \"\n                             \"http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48\")\n    @pytest.mark.parametrize('cmd', [i[0] for i in data_iozone])\n    def test_01_iozone(self, cmd):\n        ioz_res = fp.send(cmd)\n>       len_rs = fp.assert_Iozone(ioz_res)\n\ntest_fio.py:20: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <Utils.Base_init.BspTest object at 0x00000192D80B7C50>\nioz_res = '\\tIozone: Performance Test of File I/O\\n\\t        Version $Revision: 3.489 $\\n\\t\\tCompiled for 64 bit mode.\\n\\t\\tBuil...  2798015                                                                                  \\n\\niozone test complete.\\n'\n\n    def assert_Iozone(self, ioz_res):\n        global len_better\n        op = OperationData('iozone.csv')\n        dict_list = dict(ChainMap(*op.get_data_dict()))\n        if len(str(dict_list['reclen'])) == 3:\n            re_result = re.search(r'(\\s+[0-9]{7}){4}', ioz_res)\n            if re_result is None:\n                logging.warning('测试数据不正常或参数错误')\n                return False\n            else:\n                re_list = [i for i in re_result.group(0).strip().split(' ') if i != '']  # 测试数据\n                list_history = dict_list['history_result'].split(' ')  # 历史数据\n                len_better = len(set([i for i in re_list for j in list_history if int(i) / int(j) > 0.98]))\n                # 测试数据除以历史数据大于0.98,增加新列表并去重\n                if len_better == 4:\n                    # 测试数据都大于x86对照组，返回四个数值。\n                    logging.info(f'测试通过！测试数据：{re_result} 符合预期')\n                    return True\n                else:\n>                   gap_result = (int(re_result[0]) - int(list_history[0])) / int(list_history[0])\nE                   ValueError: invalid literal for int() with base 10: '  3410295  3593327  2774925  2798015'\n\n..\\Utils\\Base_init.py:69: ValueError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "ValueError: invalid literal for int() with base 10: '  3410295  3593327  2774925  2798015'",
+    "statusTrace" : "self = <Case.test_fio.TestIOzone object at 0x00000192D81AA0D0>\ncmd = 'iozone -r 1024 -i 0 -i 1  -s 20G -I'\n\n    @pytest.mark.description(\"IOzone性能测试: \"\n                             \"http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48\")\n    @pytest.mark.parametrize('cmd', [i[0] for i in data_iozone])\n    def test_01_iozone(self, cmd):\n        ioz_res = fp.send(cmd)\n>       len_rs = fp.assert_Iozone(ioz_res)\n\ntest_fio.py:20: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <Utils.Base_init.BspTest object at 0x00000192D80B7C50>\nioz_res = '\\tIozone: Performance Test of File I/O\\n\\t        Version $Revision: 3.489 $\\n\\t\\tCompiled for 64 bit mode.\\n\\t\\tBuil...  2798015                                                                                  \\n\\niozone test complete.\\n'\n\n    def assert_Iozone(self, ioz_res):\n        global len_better\n        op = OperationData('iozone.csv')\n        dict_list = dict(ChainMap(*op.get_data_dict()))\n        if len(str(dict_list['reclen'])) == 3:\n            re_result = re.search(r'(\\s+[0-9]{7}){4}', ioz_res)\n            if re_result is None:\n                logging.warning('测试数据不正常或参数错误')\n                return False\n            else:\n                re_list = [i for i in re_result.group(0).strip().split(' ') if i != '']  # 测试数据\n                list_history = dict_list['history_result'].split(' ')  # 历史数据\n                len_better = len(set([i for i in re_list for j in list_history if int(i) / int(j) > 0.98]))\n                # 测试数据除以历史数据大于0.98,增加新列表并去重\n                if len_better == 4:\n                    # 测试数据都大于x86对照组，返回四个数值。\n                    logging.info(f'测试通过！测试数据：{re_result} 符合预期')\n                    return True\n                else:\n>                   gap_result = (int(re_result[0]) - int(list_history[0])) / int(list_history[0])\nE                   ValueError: invalid literal for int() with base 10: '  3410295  3593327  2774925  2798015'\n\n..\\Utils\\Base_init.py:69: ValueError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "7b6afb6a97bc68d",
+      "name" : "log",
+      "source" : "7b6afb6a97bc68d.txt",
+      "type" : "text/plain",
+      "size" : 1663
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 1,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Case"
+  }, {
+    "name" : "suite",
+    "value" : "test_fio"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestIOzone"
+  }, {
+    "name" : "host",
+    "value" : "Meiyi-EXT"
+  }, {
+    "name" : "thread",
+    "value" : "30544-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "Case.test_fio"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "cmd",
+    "value" : "'iozone -r 1024 -i 0 -i 1  -s 20G -I'"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')" ]
+  },
+  "source" : "a35611bcb1fefefd.json",
+  "parameterValues" : [ "'iozone -r 1024 -i 0 -i 1  -s 20G -I'" ]
+}

@@ -1,0 +1,80 @@
+{
+  "uid" : "1d705da38e1da241",
+  "name" : "test_01_iozone[iozone -r 4096 -i 0 -i 1  -s 20G -I]",
+  "fullName" : "Case.test_fio.TestIOzone#test_01_iozone",
+  "historyId" : "e8a473e53ff4fe563a0035ed56e29482",
+  "time" : {
+    "start" : 1740483757302,
+    "stop" : 1740483834281,
+    "duration" : 76979
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: True\nassert False",
+  "statusTrace" : "self = <Case.test_fio.TestIOzone object at 0x000001B967B77950>\ncmd = 'iozone -r 4096 -i 0 -i 1  -s 20G -I'\n\n    @pytest.mark.description(\"IOzone性能测试: \"\n                             \"http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48\")\n    @pytest.mark.parametrize('cmd', [i[0] for i in data_iozone])\n    def test_01_iozone(self, cmd):\n        ioz_res = fp.send(cmd)\n        len_rs = fp.assert_Iozone(ioz_res)\n        print(len_rs)\n>       assert len_rs, True\nE       AssertionError: True\nE       assert False\n\ntest_fio.py:22: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: True\nassert False",
+    "statusTrace" : "self = <Case.test_fio.TestIOzone object at 0x000001B967B77950>\ncmd = 'iozone -r 4096 -i 0 -i 1  -s 20G -I'\n\n    @pytest.mark.description(\"IOzone性能测试: \"\n                             \"http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48\")\n    @pytest.mark.parametrize('cmd', [i[0] for i in data_iozone])\n    def test_01_iozone(self, cmd):\n        ioz_res = fp.send(cmd)\n        len_rs = fp.assert_Iozone(ioz_res)\n        print(len_rs)\n>       assert len_rs, True\nE       AssertionError: True\nE       assert False\n\ntest_fio.py:22: AssertionError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "cbe6eaf02b37c2cc",
+      "name" : "log",
+      "source" : "cbe6eaf02b37c2cc.txt",
+      "type" : "text/plain",
+      "size" : 1731
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 1,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Case"
+  }, {
+    "name" : "suite",
+    "value" : "test_fio"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestIOzone"
+  }, {
+    "name" : "host",
+    "value" : "Meiyi-EXT"
+  }, {
+    "name" : "thread",
+    "value" : "30460-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "Case.test_fio"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "cmd",
+    "value" : "'iozone -r 4096 -i 0 -i 1  -s 20G -I'"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "description('IOzone性能测试: http://qa-zentao.mthreads.com:9000/testcase-view-8387-9.html?tid=90w8fi48')" ]
+  },
+  "source" : "1d705da38e1da241.json",
+  "parameterValues" : [ "'iozone -r 4096 -i 0 -i 1  -s 20G -I'" ]
+}

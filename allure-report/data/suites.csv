@@ -1,0 +1,8 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Feb 25 20:00:43 CST 2025","Tue Feb 25 20:01:39 CST 2025","56110","Case","test_fio","TestIOzone","","","test_01_iozone[iozone -r 512 -i 0 -i 1  -s 20G -I]",""
+"broken","Tue Feb 25 20:05:50 CST 2025","Tue Feb 25 20:07:14 CST 2025","83578","Case","test_fio","TestIOzone","","","test_02_fio[sudo fio -filename=\u6587\u4ef6 -direct=1 -iodepth 1 -thread -rw=write -ioengine=psync -bs=512b -size=1G -group_reporting -name=mytest]",""
+"broken","Tue Feb 25 20:03:52 CST 2025","Tue Feb 25 20:04:58 CST 2025","65980","Case","test_fio","TestIOzone","","","test_02_fio[sudo fio -filename=\u6587\u4ef6 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=512b -size=1G -group_reporting -name=mytest]",""
+"failed","Tue Feb 25 20:04:58 CST 2025","Tue Feb 25 20:05:50 CST 2025","52165","Case","test_fio","TestIOzone","","","test_02_fio[sudo fio -filename=\u6587\u4ef6 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest]",""
+"failed","Tue Feb 25 20:02:37 CST 2025","Tue Feb 25 20:03:52 CST 2025","74959","Case","test_fio","TestIOzone","","","test_01_iozone[iozone -r 4096 -i 0 -i 1  -s 20G -I]",""
+"failed","Tue Feb 25 20:01:39 CST 2025","Tue Feb 25 20:02:37 CST 2025","57431","Case","test_fio","TestIOzone","","","test_01_iozone[iozone -r 1024 -i 0 -i 1  -s 20G -I]",""
+"failed","Tue Feb 25 20:07:14 CST 2025","Tue Feb 25 20:08:35 CST 2025","81516","Case","test_fio","TestIOzone","","","test_02_fio[sudo fio -filename=\u6587\u4ef6 -direct=1 -iodepth 1 -thread -rw=write -ioengine=psync -bs=1M -size=40G -group_reporting -name=mytest]",""
