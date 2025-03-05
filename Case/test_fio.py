@@ -1,5 +1,4 @@
 import pytest
-import re
 from Utils.Base_init import BspTest
 from Utils.OperationData import OperationData
 

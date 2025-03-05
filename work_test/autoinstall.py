@@ -3,9 +3,10 @@ import re
 import json
 import base64
 from requests.utils import dict_from_cookiejar
-import datetime
+import roll_back
+import Base_init
 
-
+pc = Base_init.BspTest()
 class Autoinstall:
     def __init__(self):
         self.payload = json.dumps({
@@ -49,13 +50,15 @@ class Autoinstall:
 
     def get_gr_umd(self):
         print('umd仓库')
-        path = self.enbase('gr-umd/release_M1000_1.2.0')
-        # https://oss.mthreads.com:9001/api/v1/buckets/release-ci/objects?prefix = Z3ItdW1kL3JlbGVhc2VfTTEwMDBfMS4yLjAv
-        response = self.requests.get(f'{self.url}{self.buckets}release-ci/objects?prefix={path}',
-                                     headers=self.get_headers())
-        print(response.status_code)
-        print(response.text)
-        print(response.json(), 'gr-umd')
+        path = self.enbase('gr-umd/release_M1000_1.2.0/')
+        res = self.requests.get(f'{self.url}{self.buckets}release-ci/objects?prefix={path}',
+                                headers=self.get_headers())
+        deb = [i['name'] for i in res.json()['objects'] if
+               i['name'].endswith('mtgpu_linux-xorg-release-hw-glvnd.tar.gz')]
+        '21b40efd9_arm64-mtgpu_linux-xorg-release-hw-glvnd.tar.gz'
+        'https://oss.mthreads.com/release-ci/gr-umd/release_M1000_1.2.0/08cb3bac3_arm64-mtgpu_linux-xorg-release-hw_dbg.tar.gz'
+        print(f'wget https://oss.mthreads.com/release-ci/gr-umd/release_M1000_1.2.0/'
+              f'{roll_back.choose_download()}_{roll_back.ger_frame_text()}-mtgpu_linux-xorg-release-hw-glvnd.tar.gz')
 
     def get_buckets(self):
         print('仓库')
@@ -106,10 +109,9 @@ class Autoinstall:
 
 
 if __name__ == '__main__':
-    # https://oss.mthreads.com:9001/api/v1/buckets/release-ci/objects?prefix=Z3ItdW1kL3JlbGVhc2VfTTEwMDBfMS4yLjAv
     fp = Autoinstall()
     fp.get_session()
-    fp.get_gpu_driver()
-    fp.get_kernels()
+    # fp.get_gpu_driver()
+    # fp.get_kernels()
     # fp.get_buckets()
-    # fp.get_gr_umd()
+    fp.get_gr_umd()
