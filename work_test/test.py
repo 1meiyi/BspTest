@@ -2,7 +2,7 @@
 # import json
 # from requests.auth import HTTPBasicAuth
 # from requests.utils import dict_from_cookiejar
-#
+
 # payload = json.dumps({
 #     "accessKey": "mtoss",
 #     "secretKey": "mtoss123"
@@ -258,27 +258,27 @@ from bs4 import BeautifulSoup
 #     list_commit.append(commit)
 #     print(list_commit)
 
-soup = BeautifulSoup(tst, 'html.parser')
-list_commit = []
-dict_data = {'short_id': [i.get_text() for i in soup.find_all('td', attrs={'name': 'short_id'})],
-             'commit_id': [i.get_text() for i in soup.find_all('td', attrs={'name': 'commit_id'})],
-             'commit_time': [i.get_text() for i in soup.find_all('td', attrs={'name': 'commit_time'})],
-             'commit_msg': [i.get_text() for i in soup.find_all('td', attrs={'name': 'commit_msg'})],
-             'author': [i.get_text() for i in soup.find_all('td', attrs={'name': 'author'})]}
-for short_id, commit_id, commit_time, commit_msg, author in zip(dict_data['short_id'], dict_data['commit_id'],
-                                                                dict_data['commit_time'], dict_data['commit_msg'],
-                                                                dict_data['author']):
-    commit = {
-        'short_id': short_id,
-        'commit_id': commit_id,
-        'commit_time': commit_time,
-        'commit_msg': commit_msg,
-        'author': author
-    }
-    list_commit.append(commit)
-for Merge in list_commit:
-    if 'Merge' in Merge['commit_msg']:
-        print(Merge)
+# soup = BeautifulSoup(tst, 'html.parser')
+# list_commit = []
+# dict_data = {'short_id': [i.get_text() for i in soup.find_all('td', attrs={'name': 'short_id'})],
+#              'commit_id': [i.get_text() for i in soup.find_all('td', attrs={'name': 'commit_id'})],
+#              'commit_time': [i.get_text() for i in soup.find_all('td', attrs={'name': 'commit_time'})],
+#              'commit_msg': [i.get_text() for i in soup.find_all('td', attrs={'name': 'commit_msg'})],
+#              'author': [i.get_text() for i in soup.find_all('td', attrs={'name': 'author'})]}
+# for short_id, commit_id, commit_time, commit_msg, author in zip(dict_data['short_id'], dict_data['commit_id'],
+#                                                                 dict_data['commit_time'], dict_data['commit_msg'],
+#                                                                 dict_data['author']):
+#     commit = {
+#         'short_id': short_id,
+#         'commit_id': commit_id,
+#         'commit_time': commit_time,
+#         'commit_msg': commit_msg,
+#         'author': author
+#     }
+#     list_commit.append(commit)
+# for Merge in list_commit:
+#     if 'Merge' in Merge['commit_msg']:
+#         print(Merge)
         # print(list_commit)
 #     del commit
 # else:
@@ -291,3 +291,11 @@ for Merge in list_commit:
 #     else:
 #         print('请重新输入！')
 #         continue
+
+"""
+dkms remove mtgpu -v 1.0.0 --all
+rm -rf /usr/src/mtgpu-1.0.0
+dpkg -X 94c7840a7/94c7840a7_arm64-mtgpu_linux-xorg-release-hw.deb /
+dkms add mtgpu -v 1.0.0 
+dkms install mtgpu -v 1.0.0
+"""

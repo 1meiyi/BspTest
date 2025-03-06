@@ -1,0 +1,36 @@
+INFO     Utils.Base_init:Base_init.py:33 exec cmd：sudo fio -filename=文件 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=512b -size=1G -group_reporting -name=mytest
+
+INFO     Utils.Base_init:Base_init.py:35 sucess ：mytest: (g=0): rw=read, bs=(R) 512B-512B, (W) 512B-512B, (T) 512B-512B, ioengine=psync, iodepth=1
+fio-3.28
+Starting 1 thread
+mytest: Laying out IO file (1 file / 1024MiB)
+
+mytest: (groupid=0, jobs=1): err= 0: pid=3372903: Wed Mar  5 18:23:45 2025
+  read: IOPS=84.9k, BW=41.5MiB/s (43.5MB/s)(1024MiB/24688msec)
+    clat (usec): min=8, max=8075, avg=11.35, stdev=14.65
+     lat (usec): min=8, max=8075, avg=11.42, stdev=14.65
+    clat percentiles (nsec):
+     |  1.00th=[ 9024],  5.00th=[ 9792], 10.00th=[ 9920], 20.00th=[10432],
+     | 30.00th=[10688], 40.00th=[10944], 50.00th=[11072], 60.00th=[11200],
+     | 70.00th=[11328], 80.00th=[11456], 90.00th=[11712], 95.00th=[12864],
+     | 99.00th=[20864], 99.50th=[21888], 99.90th=[24704], 99.95th=[51968],
+     | 99.99th=[62208]
+   bw (  KiB/s): min=31037, max=44270, per=100.00%, avg=42471.37, stdev=2732.96, samples=49
+   iops        : min=62074, max=88540, avg=84942.73, stdev=5465.92, samples=49
+  lat (usec)   : 10=10.64%, 20=86.13%, 50=3.17%, 100=0.06%, 250=0.01%
+  lat (usec)   : 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%, 10=0.01%
+  cpu          : usr=7.19%, sys=11.50%, ctx=2097148, majf=0, minf=1
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=2097152,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=41.5MiB/s (43.5MB/s), 41.5MiB/s-41.5MiB/s (43.5MB/s-43.5MB/s), io=1024MiB (1074MB), run=24688-24688msec
+
+Disk stats (read/write):
+  nvme0n1: ios=2089763/156, merge=0/134, ticks=17294/35, in_queue=17350, util=99.73%
+
+INFO     root:Base_init.py:101 True

@@ -83,6 +83,6 @@ def choose_download():
             print('请重新输入！')
             continue
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     choose_download()
