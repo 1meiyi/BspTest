@@ -7,7 +7,7 @@ class BspTest:
     ssh = None
 
     def __init__(self):
-        logging.basicConfig(level=logging.INFO, format='\n%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        logging.basicConfig(level=logging.WARNING, format='\n%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.ssh = paramiko.SSHClient()
         self.log = logging.getLogger(__name__)
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -23,6 +23,7 @@ class BspTest:
     def send(self, cmd):
         stdin, stdout, stderr = self.ssh.exec_command(cmd)
         stdout = stdout.read().decode()
+        print(stdout)
         return stdout
     def close(self):
         self.ssh.close()

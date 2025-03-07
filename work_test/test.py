@@ -36,6 +36,7 @@
 #
 # print(datetime.date.today().strftime('%Y%m%d'))
 import re
+import datetime
 
 tst = """
 <!DOCTYPE html>
@@ -279,7 +280,7 @@ from bs4 import BeautifulSoup
 # for Merge in list_commit:
 #     if 'Merge' in Merge['commit_msg']:
 #         print(Merge)
-        # print(list_commit)
+# print(list_commit)
 #     del commit
 # else:
 
@@ -299,3 +300,18 @@ dpkg -X 94c7840a7/94c7840a7_arm64-mtgpu_linux-xorg-release-hw.deb /
 dkms add mtgpu -v 1.0.0 
 dkms install mtgpu -v 1.0.0
 """
+# print(datetime.date.today())
+
+deb_name = ['fix_linux-headers-6.6.10_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
+            'linux-headers-6.6.10_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
+            'linux-image-6.6.10_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
+            'linux-image-6.6.10-dbg_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
+            'linux-libc-dev_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb']
+
+for i in deb_name:
+    # if i.startswith('fix_'):
+    #     print(i)
+    if i.endswith('.deb') and 'dbg' not in i and not i.startswith('linux-headers'):
+        print(i)
+
+
