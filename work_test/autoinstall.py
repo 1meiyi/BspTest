@@ -1,6 +1,5 @@
 import datetime
 import re
-
 import requests
 import json
 import base64
@@ -9,6 +8,8 @@ import roll_back
 import Base_init
 
 pc = Base_init.BspTest()
+
+
 
 
 class Autoinstall:
@@ -76,24 +77,24 @@ class Autoinstall:
         print(response.status_code)
 
     def get_gpu_driver(self, date):
-        # timedate = datetime.date.today().strftime('%Y%m%d')
+        # timedate = datetime.date.today().strftime('%Y%m%d%H%M%S')
         # 编码仓库地址
         prefix = self.enbase('release_M1000_1.2.0/')
         # 拼接 url
         url = f'{self.url}{self.buckets}product-release/objects?prefix={prefix}'
         # 根据时间获取最新仓库
-
         time_date = [i['name'] for i in self.requests.get(url, headers=self.get_headers()).json()['objects']]
         roll_back_time = re.search('[0-9]{8}', time_date[-date]).group(0)
         deb_url = f'{self.url}{self.buckets}product-release/objects?prefix={self.enbase(f'release_M1000_1.2.0/{roll_back_time}/')}'
         # 筛选deb
-        deb_name = [i['name'] for i in self.requests.get(deb_url.strip(), headers=self.get_headers()).json()['objects'] if
+        deb_name = [i['name'] for i in self.requests.get(deb_url.strip(), headers=self.get_headers()).json()['objects']
+                    if
                     i['name'].endswith('glvnd-pc_arm64.deb')]
-        self.send(f'wget https://oss.mthreads.com/product-release/{deb_name[0]} -P /home/swqa/daily/gpu/')
+        # self.send(f'wget https://oss.mthreads.com/product-release/{deb_name[0]} -P /home/swqa/daily/gpu/')
         print(f'正在下载：https://oss.mthreads.com/product-release/{deb_name[0]}')
-        self.send('sudo dpkg -i /home/swqa/daily/gpu/*.deb')
-        print('Gpu驱动 安装成功')
-        self.send('sudo reboot')
+        # self.send('sudo dpkg -i /home/swqa/daily/gpu/*.deb')
+        # print('Gpu驱动 安装成功')
+        # self.send('sudo reboot')
 
     def get_kernels(self, date):
         timedate = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
@@ -114,13 +115,13 @@ class Autoinstall:
                        i.endswith('.deb') and 'dbg' not in i and not i.startswith('linux-headers')]
         for i in deb_package:
             print(f'正在下载{i}')
-            self.send(f'wget https://oss.mthreads.com/sw-build/{i} -P /home/swqa/daily/{roll_back_time}/kernel/')
-        self.send(f'rm -rf /home/swqa/daily/{roll_back_time}/kernel/linux-headers*')
-        cmd = f'sudo dpkg -i /home/swqa/daily/{roll_back_time}/kernel/*.deb'
-        print(f'正在安装 exec_cmd:{cmd}')
-        self.send(cmd)
-        print('已完成安装')
-        self.send('sudo reboot')
+        #     self.send(f'wget https://oss.mthreads.com/sw-build/{i} -P /home/swqa/daily/{roll_back_time}/kernel/')
+        # self.send(f'rm -rf /home/swqa/daily/{roll_back_time}/kernel/linux-headers*')
+        # cmd = f'sudo dpkg -i /home/swqa/daily/{roll_back_time}/kernel/*.deb'
+        # print(f'正在安装 exec_cmd:{cmd}')
+        # self.send(cmd)
+        # print('已完成安装')
+        # self.send('sudo reboot')
 
     def get_firmware(self, date):
         # 编码kernel prefix
@@ -173,13 +174,20 @@ class Autoinstall:
         ex_cmd.send(cmd)
         ex_cmd.close()
 
+    def get_rs(self):
+        prefix = self.enbase(f'm1000/daily/master/aibook-6.6-ubuntu/')
 
 if __name__ == '__main__':
     fp = Autoinstall()
     fp.get_session()
-    fp.get_gpu_driver(15)
-    # fp.get_kernels()
+
+    # 安装15天之前的驱动
+    # fp.get_gpu_driver(15)
+    # # 安装1天前的kernel
+    # fp.get_kernels(1)
+    # # 安装20天之前的固件
     # fp.get_firmware(20)
-    # fp.get_buckets()
+    # # 安装指定commit-id umd驱动
     # fp.get_gr_umd()
+    # # 下载最新iso
     # fp.get_iso()

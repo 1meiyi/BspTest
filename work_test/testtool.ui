@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Testtool</class>
+ <widget class="QMainWindow" name="Testtool">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -122,5 +122,22 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>choose_roll_back</sender>
+   <signal>windowIconTextChanged(QString)</signal>
+   <receiver>umdkmddownload</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>335</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>233</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

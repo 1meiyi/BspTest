@@ -302,16 +302,16 @@ dkms install mtgpu -v 1.0.0
 """
 # print(datetime.date.today())
 
-deb_name = ['fix_linux-headers-6.6.10_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
-            'linux-headers-6.6.10_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
-            'linux-image-6.6.10_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
-            'linux-image-6.6.10-dbg_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
-            'linux-libc-dev_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb']
+# deb_name = ['fix_linux-headers-6.6.10_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
+#             'linux-headers-6.6.10_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
+#             'linux-image-6.6.10_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
+#             'linux-image-6.6.10-dbg_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb',
+#             'linux-libc-dev_6.6.10-r20250303011707-g258293f4dc40-1_arm64.deb']
+#
+# for i in deb_name:
+#     # if i.startswith('fix_'):
+#     #     print(i)
+#     if i.endswith('.deb') and 'dbg' not in i and not i.startswith('linux-headers'):
+#         print(i)
 
-for i in deb_name:
-    # if i.startswith('fix_'):
-    #     print(i)
-    if i.endswith('.deb') and 'dbg' not in i and not i.startswith('linux-headers'):
-        print(i)
-
-
+'oss/release-ci/computeQA/cuda_compatible/CI/release_KUAE_2.0_for_PH1_M3D/2025- 03-16/driver_toolkits_test/s3000/800_test_musa_cts/MUSA_THIRD_PARTY_AND_HIP_TEST/'
